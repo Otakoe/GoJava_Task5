@@ -1,4 +1,59 @@
 package car.parts;
+/*cardoor переменные приват, доступ через гетеры и сетеры
+        переменные - дверь(откр,закр) окна(откр закр)
+        конструктор без аргументов для состояния по умолчанию
+        перегруж конструктор принимает оба состояния дверей и окон
+        функции - дверь открыть, дверь закрыть, свичер откр/закр
+        тоже самое с окном
+        принт состояния объекта
+*/
+public class CarDoor {
+    //private      true open false close
+    private String door;
+    private String window;
 
-public class CarDooe {
+    public void CarDoor(){
+        doorClose();
+        windowClose();
+    }
+    public void CarDoor(String door,String window){
+        this.door = door;
+        this.window=window;
+    }
+    public void doorOpen(){
+        door="open";
+    }
+    public void doorClose(){
+        door="close";
+    }
+    public void doorSwitch(){
+        if(door.equals("open"))
+            door="close";
+        else
+            door="open";
+    }
+    public void windowOpen(){
+        window="open";
+    }
+    public void windowClose(){
+        window = "close";
+    }
+    public void windowSwitch(){
+        if(window.equals("open"))
+            window="close";
+        else
+            window="close";
+    }
+    public void printInfo(){
+        System.out.print("Статус дверей: ");
+        if(door.equals("open"))
+            System.out.println("открыты.");
+        else
+            System.out.println("закрыты.");
+        System.out.print("Статус окон: ");
+        if(window.equals("open"))
+            System.out.println("открыты.");
+        else
+            System.out.println("закрыты.");
+    }
 }
