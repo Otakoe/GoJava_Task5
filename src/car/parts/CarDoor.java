@@ -46,14 +46,26 @@ public class CarDoor {
     }
     public void printInfo(){
         System.out.print("Статус дверей: ");
-        if(door.equals("open"))
+        if(getDoorBool())
             System.out.println("открыты.");
         else
             System.out.println("закрыты.");
         System.out.print("Статус окон: ");
-        if(window.equals("open"))
+        if(getWindowBool())
             System.out.println("открыты.");
         else
             System.out.println("закрыты.");
+    }
+    public String getDoor(){
+        return door;
+    }
+    public String getWindow(){
+        return window;
+    }
+    public boolean getDoorBool(){
+            return door.equals("open");
+    }
+    public boolean getWindowBool(){
+        return window.equals("open");
     }
 }

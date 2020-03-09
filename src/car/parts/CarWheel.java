@@ -13,7 +13,7 @@ public class CarWheel {
         tire=1.0;
     }
     public void useTire(int n){
-        this.tire*=(n/100.0);
+        this.tire-=(n/100.0);
     }
     public double getTire(){
         return tire;
