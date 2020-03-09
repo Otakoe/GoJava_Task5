@@ -19,7 +19,7 @@ public class Car {
 
 private enum engineType {gasoline,hybrid,hydrogen,electro};
 private engineType engine;
-private final int date[]= new int[3];
+private int date;
 private int speedMax;
 private int speedMaxCurrent;
 private int timeTo100;
@@ -31,11 +31,9 @@ private int wheelsInCar=4;
 private int tiresInCar=0;
 private CarDoor doors[]=new CarDoor[4];
 
-public void Car(int [] date){
-    //проверить корректность даты до 12 месяцев. до 31 числа, до 2020 года
-    this.date[0]=date[0];
-    this.date[1]=date[1];
-    this.date[2]=date[2];
+public void Car(int date){
+    if(date<=2020)
+        this.date=date;
     for (int i=0;i<wheelsInCar;i++)
         wheels[i]=new CarWheel();
 }
@@ -49,6 +47,10 @@ public void setSpeedMax(int speedMax) {
 public void setTimeTo100(int timeTo100){
     this.timeTo100=timeTo100;
 }
+public void setEngine(engineType type) {
+    engine = type;
+}
+
 //всё что можно делать с машиной
 public void addTire(int tires){
     if(speed >0)

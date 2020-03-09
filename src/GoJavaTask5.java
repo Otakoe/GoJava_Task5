@@ -17,10 +17,16 @@ public class GoJavaTask5 {
         boolean game=true;
         String input;
         Scanner scan = new Scanner(System.in);
+        System.out.println("Приветствие");
+        System.out.println("Давайте создадим машину и покатаемся на ней с друзьями");
+        System.out.println("Введите ваше действие. yes - да, exit - выход");
         while(game) {
             input = scan.nextLine();
-            if(input.equals("exit"))
-                game=false;
+            if(input.equals("exit")) {
+                game = false;
+                break;
+            }
+
         }
     }
 }
