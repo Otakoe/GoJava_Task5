@@ -1,24 +1,18 @@
 package car.parts;
-/*cardoor переменные приват, доступ через гетеры и сетеры
-        переменные - дверь(откр,закр) окна(откр закр)
-        конструктор без аргументов для состояния по умолчанию
-        перегруж конструктор принимает оба состояния дверей и окон
-        функции - дверь открыть, дверь закрыть, свичер откр/закр
-        тоже самое с окном
-        принт состояния объекта
-*/
 public class CarDoor {
     //private      true open false close
     private String door;
     private String window;
 
-    public void CarDoor(){
+    public CarDoor(){
         doorClose();
         windowClose();
     }
-    public void CarDoor(String door,String window){
-        this.door = door;
-        this.window=window;
+    public CarDoor(String door,String window){
+        if(door.equals("open")||door.equals("close"))
+            this.door = door;
+        if(window.equals("open")||window.equals("close"))
+            this.window=window;
     }
     public void doorOpen(){
         door="open";

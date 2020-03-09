@@ -17,27 +17,40 @@ public class Car {
                                               принт всех данных в т.ч. макс расчётную скорость
 */
 
-private enum engineType {gasoline,hybrid,hydrogen,electro};
+public static enum engineType {gasoline,hybrid,hydrogen,electro};
 private engineType engine;
 private int date;
 private int speedMax;
 private int speedMaxCurrent;
 private int timeTo100;
 private int passengerMax;
-private int passengerNow;
-private int speed;
+private int passengerNow=0;
+private int speed=0;
 private CarWheel wheels[];
 private int wheelsInCar=4;
 private int tiresInCar=0;
 private CarDoor doors[]=new CarDoor[4];
 
-public void Car(int date){
-    if(date<=2020)
-        this.date=date;
-    for (int i=0;i<wheelsInCar;i++)
-        wheels[i]=new CarWheel();
+private void CarHidden (int date) {
+    if (date <= 2020)
+        this.date = date;
+    for (int i = 0; i < wheelsInCar; i++)
+        wheels[i] = new CarWheel();
 }
-//базовые сеттеры
+public Car(int date){
+    CarHidden(date);
+    for(CarDoor d:doors){
+        d=new CarDoor();
+    }
+}
+public Car(int date,engineType engine,String sDoor[],String sWindow[]){
+    CarHidden(date);
+    this.engine=engine;
+    for (int i=0;i<4;i++)
+        doors[i]=new CarDoor(sDoor[i],sWindow[i]);
+}
+
+//базовые сеттеры и геттеры
 public void setPassengerMax(int passengerMax){
     this.passengerMax=passengerMax;
 }
@@ -50,7 +63,9 @@ public void setTimeTo100(int timeTo100){
 public void setEngine(engineType type) {
     engine = type;
 }
-
+public int getSpeed(){
+    return speed;
+}
 //всё что можно делать с машиной
 public void addTire(int tires){
     if(speed >0)
@@ -244,6 +259,39 @@ public void switchWindow(int n){
     if(n<=4&&n>=1){
         doors[n-1].windowSwitch();
     }
+}
+
+public void printWheelsInfo(){
+    int i=0;
+    for(CarWheel w:wheels){
+        System.out.print("Колесо "+i+" ");
+        w.printInfo();
+        i++;
+    }
+}
+public void printDoorsInfo(){
+    int i=0;
+    for(CarDoor d:doors) {
+        System.out.println("Дверь "+i+" ");
+        d.printInfo();
+        i++;
+    }
+}
+public void printImportantInfo(){
+    System.out.println("Максимальная расчётная скорость "+calcMaxSpeed());
+    System.out.println("Сейчас людей в машине "+passengerNow);
+    System.out.println("Текущая скорость "+speed);
+    System.out.println("Кол-во запасных колёс "+(wheelsInCar-4));
+    System.out.println("Кол-во запасных покрышек "+tiresInCar);
+    printWheelsInfo();
+    printDoorsInfo();
+}
+public void printInfo(){
+    System.out.println("Машина "+date+" года выпуска");
+    System.out.println("Теоретическая максимальная скорость "+speedMax);
+    System.out.println("Разгон до 100 "+timeTo100);
+    System.out.println("Пассажировместительность вместе с водителем "+passengerMax);
+    printImportantInfo();
 }
 
 public boolean checkDoors(){
