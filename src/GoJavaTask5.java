@@ -51,27 +51,27 @@ public class GoJavaTask5 {
                 wrong();
             }
         }
-        //ввод открытых и закрытых дверей и окон
+
         Car.engineType engine;
-        System.out.println("Какой тип двигателя у машины. electro - электрический");
+        System.out.println("Какой тип двигателя у машины.");
         stopWhile: //метка для выхода из следующего вайла с свичкейс
         while(true) {
-            System.out.println("electro - электрический");
-            System.out.println("gasoline - бензиновый");
-            System.out.println("hybrid - гибридный");
-            System.out.println("hydrogen - водородный");
+            System.out.println("1 - электрический");
+            System.out.println("2 - бензиновый");
+            System.out.println("3 - гибридный");
+            System.out.println("4 - водородный");
             input=scan.nextLine();
             switch (input){
-                case "electro":
+                case "1":
                     engine= Car.engineType.electro;
                     break stopWhile;
-                case "gasoline":
+                case "2":
                     engine= Car.engineType.gasoline;
                     break stopWhile;
-                case "hybrid":
+                case "3":
                     engine= Car.engineType.hybrid;
                     break stopWhile;
-                case "hydrogen":
+                case "4":
                     engine= Car.engineType.hydrogen;
                     break stopWhile;
                 default:
@@ -79,17 +79,19 @@ public class GoJavaTask5 {
             }
             }
         //конец вайла из которого выйдем по метке
+
         Car car; //пустой но видимый объект
+        //ввод открытых и закрытых дверей и окон
         while(true){
             System.out.println("Будете указывать какие окна и двери открыты а какие закрыты.\n" +
-                    "\"yes\" - да, \"no\" - пропустить, тогда все окна и двери будут закрыты");
+                    "\"1\" - да, \"0\" - пропустить, тогда все окна и двери будут закрыты");
                 input=scan.nextLine();
 
-                if(input.equals("no")) {
+                if(input.equals("0")) {
                     car=new Car(year);
                     break;
                 }                        // первый констуруктор и выход из цикла
-                else if(input.equals("yes")){}              // всё хорошо продолжаем двигаться ко второму конструктору
+                else if(input.equals("1")){}              // всё хорошо продолжаем двигаться ко второму конструктору
                 else {
                     wrong();
                     continue;
@@ -118,7 +120,7 @@ public class GoJavaTask5 {
                 }
                 car=new Car(year,engine,sDoor,sWindow);
         }
-        //ввод пассажировместительности через сеттер а не конструктор просто для проверки рабочести сеттера
+        //ввод пассажировместительности через сеттер а не конструктор просто для разнообразия
         while (true){
             int pass;
             try{
@@ -156,9 +158,9 @@ public class GoJavaTask5 {
             try{
                 System.out.println("А до 100 за сколько разгон?");
                 time=scan.nextInt();
-                if(time<=2){
-                    System.out.println("Такого быть не может, наверное около 5");
-                    time=5;
+                if(time<=2||time>50){
+                    System.out.println("Такого быть не может, наверное около 10 сек");
+                    time=10;
                 }
                 car.setTimeTo100(time);
                 break;
@@ -167,6 +169,8 @@ public class GoJavaTask5 {
             }
             break;
         }
+
+        //Далее код взаимодействия с объектом машины
         while(game) {
             input = scan.nextLine();
             if(input.equals("exit")) {
@@ -176,12 +180,19 @@ public class GoJavaTask5 {
 
         }
     }
+    // управление
     public static void controlInfoCar(){
-        System.out.println();
-        System.out.println();
+        System.out.println("wheels info - информация о имеющихся колёсах в автомобиле.\n\tПервые четыре - основные установленные");
+        System.out.println("wheel 1 - Выбор колеса");
+        System.out.println("wheel control - информация о доступных действиях с колесом");
+        System.out.println("wheel ");
     }
-
-    // потому что надоело повторять код
+    public static void wheelInfoControl(){
+        System.out.println("back - вернуться назад");
+        System.out.println("");
+    }
+    
+    //Вывод для неверного ввода
     public static void wrong(){
         System.out.println("Неверный ввод");
     }

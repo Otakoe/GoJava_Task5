@@ -262,7 +262,7 @@ public void switchWindow(int n){
 }
 
 public void printWheelsInfo(){
-    int i=0;
+    int i=1;
     for(CarWheel w:wheels){
         System.out.print("Колесо "+i+" ");
         w.printInfo();
