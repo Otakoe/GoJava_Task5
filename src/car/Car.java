@@ -66,6 +66,7 @@ public void setEngine(engineType type) {
 public int getSpeed(){
     return speed;
 }
+public int getWheelsInCar(){return wheelsInCar;}
 //всё что можно делать с машиной
 public void addTire(int tires){
     if(speed >0)
